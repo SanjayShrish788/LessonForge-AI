@@ -8,7 +8,7 @@ AI-generated lessons and QC reports do not replace instructor approval. See [the
 - [ ] Check POST, query parameters, request content, limits and caching. [RFC 9110 §9.3.3](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.3.3)
 - [ ] Check 2xx, 4xx, 5xx and individual codes, especially 401/403 and nondisclosing 404. [RFC 9110 §15](https://www.rfc-editor.org/rfc/rfc9110.html#section-15)
 - [ ] Review the examples, Node/Express exercise, timing and knowledge-check answers for the intended learners. The sample server has not been executed in this review.
-- [ ] Review the current three factual and four instructional findings, including the critical clarity finding. Decide whether further examples, measurable objectives and assessment guidance are needed.
+- [ ] Review the current three factual and two instructional findings, including the critical clarity finding. Decide whether further examples, measurable objectives and assessment guidance are needed.
 - [ ] Check claim-level citations. RFC links in lesson prose are direct links, not retrieved source records; factual QC only assesses supplied source excerpts. Older RFC 2616 records remain as historical research, but were removed from section source lists.
 
 Comments: ________________________________________________

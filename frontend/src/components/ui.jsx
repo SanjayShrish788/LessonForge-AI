@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useId, useRef } from 'react';
 import { AlertCircle, CheckCircle2, LoaderCircle, X } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -18,14 +18,16 @@ export function Notice({ children, tone = 'warning', onClose }) {
 
 export function Modal({ title, subtitle, children, onClose, wide = false }) {
   const dialogRef = useRef(null);
+  const titleId = useId();
+  const subtitleId = useId();
   useEffect(() => {
     const dialog = dialogRef.current;
     const prior = document.activeElement;
     dialog.showModal();
     return () => { dialog.close(); prior?.focus?.(); };
   }, []);
-  return <dialog ref={dialogRef} className={`modal ${wide ? 'modal-wide' : ''}`} onCancel={(e) => { e.preventDefault(); onClose(); }} onClick={(e) => { if (e.target === dialogRef.current) onClose(); }}>
-    <div className="modal-heading"><div><h2>{title}</h2>{subtitle && <p>{subtitle}</p>}</div><button type="button" className="icon-button" aria-label="Close dialog" onClick={onClose}><X size={20} /></button></div>
+  return <dialog ref={dialogRef} aria-labelledby={titleId} aria-describedby={subtitle ? subtitleId : undefined} className={`modal ${wide ? 'modal-wide' : ''}`} onCancel={(e) => { e.preventDefault(); onClose(); }} onClick={(e) => { if (e.target === dialogRef.current) onClose(); }}>
+    <div className="modal-heading"><div><h2 id={titleId}>{title}</h2>{subtitle && <p id={subtitleId}>{subtitle}</p>}</div><button type="button" className="icon-button" aria-label="Close dialog" onClick={onClose}><X size={20} /></button></div>
     {children}
   </dialog>;
 }
